@@ -54,7 +54,7 @@ $response = $rest->build();
 // 	"links" => [
 // 		"self" => [
 //			"url" => "https://example.com/",
-//			"methods" => "GET"
+//			"method" => "GET"
 //		]
 // 	]
 // ];
@@ -92,7 +92,7 @@ $response = $rest->build( $product );
 // 	"links" => [
 // 		"self" => [
 //			"url" => "https://example.com/products/1",
-//			"methods" => "GET"
+//			"method" => "GET"
 //		]
 // 	]
 // ];
@@ -125,28 +125,28 @@ $response = $rest->build();
 // 		"message" => "Ok."
 // 	],
 // 	"data" => [
-//	[
-//		"id" => 1,
-//		"name" => "product-name",
-//		"displayName" => "Product Name",
-//		"price" => "14.50",
-//		"stock" => 20
+//		[
+//			"id" => 1,
+//			"name" => "product-name",
+//			"displayName" => "Product Name",
+//			"price" => "14.50",
+//			"stock" => 20
+//		],
+// 		/* ...more ones */
 //	],
-	/* ...more ones */
-],
 // 	"links" => [
 // 		"self" => [
 //			"url" => "https://example.com/products",
-//			"methods" => "GET"
+//			"method" => "GET"
 //		],
 // 		"next" => [
 //			"url" => "https://example.com/products?page=2",
-//			"methods" => "GET"
+//			"method" => "GET"
 //		]
 // 	]
 // ];
 ```
-It's possible insert a third argument into `setLink` method to define `"methods"` property of link. If you want work with a POST route you probrably would use `$rest = $rest->setLink( "create", "/products", "POST" );`, for example.
+It's possible insert a third argument into `setLink` method to define `"method"` property of link. If you want work with a POST route, for example, you probrably would like to use `$rest = $rest->setLink( "create", "/products", "POST" );`.
 
 
 ## <a name="plan"></a> Plan
