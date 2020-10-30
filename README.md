@@ -36,7 +36,7 @@ Dowload the package and uncpack it into your project:
 ## <a name="usage"></a> Usage
 ResponseTemplate requires an valid HTTP Status Code. Refer to [section 10 of RFC 2616](https://tools.ietf.org/html/rfc2616#section-10).
 
-## <a name="simplest-case"></a> Simplest Case
+### <a name="simplest-case"></a> Simplest Case
 The simplest case is to instantiate the class ResponseTemplate with HTTP Status Code "200 Ok." and call method `build`:
 ```php
 <?php
@@ -60,7 +60,7 @@ $response = $rest->build();
 // ];
 ```
 
-## <a name="data-in-response"></a> Data in Response
+### <a name="data-in-response"></a> Data in Response
 It's possible insert data to response at the build moment:
 ```php
 <?php
@@ -90,12 +90,67 @@ $response = $rest->build( $product );
 // 		"stock" => 20
 // 	],
 // 	"links" => [
-// 		"self" => "https://example.com/products/1"
+// 		"self" => [
+//			"url" => "https://example.com/products/1",
+//			"methods" => "GET"
+//		]
 // 	]
 // ];
 ```
 
+### <a name="links-setup"></a> Links Setup
+You can make use of `setLink` method to setup a link to response:
+```php
+<?php
+use RESTfulTemplate\ResponseTemplate as ResT;
+
+$products = [
+	[
+		"id" => 1,
+		"name" => "product-name",
+		"displayName" => "Product Name",
+		"price" => "14.50",
+		"stock" => 20
+	],
+	/* ...more ones */
+];
+
+$rest = new ResT( 200 );
+$rest = $rest->setLink( "next", /products?page=2 );
+$response = $rest->build();
+// $response contains following array:
+// [
+// 	"status" => [
+// 		"code" => 200,
+// 		"message" => "Ok."
+// 	],
+// 	"data" => [
+//	[
+//		"id" => 1,
+//		"name" => "product-name",
+//		"displayName" => "Product Name",
+//		"price" => "14.50",
+//		"stock" => 20
+//	],
+	/* ...more ones */
+],
+// 	"links" => [
+// 		"self" => [
+//			"url" => "https://example.com/products",
+//			"methods" => "GET"
+//		],
+// 		"next" => [
+//			"url" => "https://example.com/products?page=2",
+//			"methods" => "GET"
+//		]
+// 	]
+// ];
+```
+It's possible insert a third argument into `setLink` method to define `"methods"` property of link. If you want work with a POST route you probrably would use `$rest = $rest->setLink( "create", "/products", "POST" );`, for example.
+
 
 ## <a name="plan"></a> Plan
-[RFC 7231](https://tools.ietf.org/html/rfc7231#section-6.5.1)
+This project aims to be up to date with standards. Future version will be aligned to [RFC 7231](https://tools.ietf.org/html/rfc7231#section-6.5.1).
+
 ## <a name="contribute"></a> Contribute
+Do a pull request or send email to Support.
