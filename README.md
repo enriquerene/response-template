@@ -116,7 +116,7 @@ $products = [
 ];
 
 $rest = new ResT( 200 );
-$rest = $rest->setLink( "next", /products?page=2 );
+$rest = $rest->setLink( "next", "/products?page=2" );
 $response = $rest->build();
 // $response contains following array:
 // [
