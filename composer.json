@@ -1,0 +1,7 @@
+{
+	"name": "restful-template/response-template",
+	"description": "A response interface builder for REST API",
+	"require": {
+		"php": "^7.2"
+	}
+}
