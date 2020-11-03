@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Utils\Http;
+namespace RESTfulTemplate;
 
-use Exception;
+use \Exception;
 $statusMapFromFile = require "./StatusMap.php";
 
 class ResponseTemplate
@@ -16,12 +16,6 @@ class ResponseTemplate
 	 *
 	 */
     private $statusCode;
-
-	/**
-	 * @var array|null
-	 *
-	 */
-	// private $data = null;
 
 	/**
 	 * @var array
@@ -44,11 +38,8 @@ class ResponseTemplate
      * @param array $data Requested data
 	 *
      */
-	public function build ( $data = null )
+	public function build ( $data = null ): array
 	{
-		if ( ! $this->isLinkDefined( "self" ) )
-			throw new Exception( self::SELF_LINK_EXCEPTION_MESSAGE );
-
 		return [
 			"status" => $this->getStatus(),
 			"data" => $data,
@@ -56,7 +47,7 @@ class ResponseTemplate
 		];
     }
 
-	public function getStatus ()
+	public function getStatus (): array
 	{
         return [
 			"code" => $this->statusCode,
@@ -75,7 +66,7 @@ class ResponseTemplate
 		return $this;
 	}
 
-	public function setLinks( array $links )
+	public function setLinks( array $links ): ResponseTemplate
 	{
 		foreach ( $links as $key => $value )
 		{
@@ -84,19 +75,19 @@ class ResponseTemplate
 		return $this;
 	}
 
-	public function getBasename ()
+	public function getBasename (): string
 	{
 		$protocol = ( empty( $_SERVER[ "HTTPS" ] ) ? "http" : "https" );
 		$host = $_SERVER[ "HTTP_HOST" ];
 		return "$protocol://$host";
 	}
 
-	public function getStatusMap ()
+	public function getStatusMap (): array
 	{
 		return $this->STATUS_MAP;
 	}
 
-	public function isLinkDefined ( string $key )
+	public function isLinkDefined ( string $key ): bool
 	{
 		return ! empty( $this->links[ $key ] );
 	}
