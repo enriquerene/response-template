@@ -1,4 +1,4 @@
-![Response Template](response-template.logo.png)
+# Response Template
 A response interface builder for REST API.
 
 ## Table of Contents
