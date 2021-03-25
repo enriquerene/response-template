@@ -3,7 +3,6 @@
 namespace RESTfulTemplate;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-//use RESTfulTemplate\ResponseTemplate;
 require_once __DIR__ . '/../src/ResponseTemplate.php';
 
 $_SERVER['HTTP_HOST'] = 'myserver';
