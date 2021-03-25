@@ -1,6 +1,6 @@
 {
     "name": "restful-template/response-template",
-    "version": "0.0.3",
+    "version": "0.0.2",
     "description": "A response interface builder for REST API",
     "type": "library",
     "minimum-stability": "stable",
