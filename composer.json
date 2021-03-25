@@ -1,19 +1,22 @@
 {
-	"name": "restful-template/response-template",
-	"description": "A response interface builder for REST API",
+    "name": "restful-template/response-template",
+    "description": "A response interface builder for REST API",
     "type": "library",
-	"keywords": [ "restful", "rest api", "http response" ],
-	"homepage": "https://github.com/enriquerene/response-template.git",
-	"license": "GPL-3.0-or-later",
-	"authors": [
-		{
-			"name": "Enrique René Beauxis Reyes",
-			"email": "contato@enriquerene.com.br",
-			"homepage": "https://enriquerene.com.br",
-			"role": "Developer"
-		}
-	],
-	"require": {
-		"php": "^7.2"
-	}
+    "keywords": [ "restful", "rest api", "http response" ],
+    "homepage": "https://github.com/enriquerene/response-template.git",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Enrique René Beauxis Reyes",
+            "email": "contato@enriquerene.com.br",
+            "homepage": "https://enriquerene.com.br",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
