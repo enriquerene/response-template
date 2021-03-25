@@ -2,16 +2,14 @@
 A response interface builder for REST API.
 
 ## Table of Contents
-- [Support](https://github.com/enriquerene/response-template#support)
-- [Installation](https://github.com/enriquerene/response-template#installation)
-- [Usage](https://github.com/enriquerene/response-template#usage)
-	+ [Simples Case](https://github.com/enriquerene/response-template#simplest-case)
-	+ [Data in Response](https://github.com/enriquerene/response-template#data-in-response)
-- [Plan](https://github.com/enriquerene/response-template#plan)
-- [Contribute](https://github.com/enriquerene/response-template#contribute)
-
-## <a name="support"></a> Support
-If you need some help you can open an issue or get in touch by email ([contato@enriquerene.com.br](mailto:contato@enriquerene.com.br)).
+- [Installation](#installation)
+- [Usage](#usage)
+	+ [Simples Case](#simplest-case)
+	+ [Data in Response](#data-in-response)
+	+ [Links Setup](#links-setup)
+- [Plan](#plan)
+- [Support](#support)
+- [Contribute](#contribute)
 
 
 ## <a name="installation"></a> Installation
@@ -40,9 +38,9 @@ ResponseTemplate requires an valid HTTP Status Code. Refer to [section 10 of RFC
 The simplest case is to instantiate the class ResponseTemplate with HTTP Status Code "200 Ok." and call method `build`:
 ```php
 <?php
-use RESTfulTemplate\ResponseTemplate as ResT;
+use RESTfulTemplate\ResponseTemplate;
 
-$rest = new ResT( 200 );
+$rest = new ResponseTemplate( 200 );
 $response = $rest->build();
 // $response contains following array:
 // [
@@ -64,7 +62,7 @@ $response = $rest->build();
 It's possible insert data to response at the build moment:
 ```php
 <?php
-use RESTfulTemplate\ResponseTemplate as ResT;
+use RESTfulTemplate\ResponseTemplate;
 
 $product = [
 	"id" => 1,
@@ -74,7 +72,7 @@ $product = [
 	"stock" => 20
 ];
 
-$rest = new ResT( 200 );
+$rest = new ResponseTemplate( 200 );
 $response = $rest->build( $product );
 // $response contains following array:
 // [
@@ -102,7 +100,7 @@ $response = $rest->build( $product );
 You can make use of `setLink` method to setup a link to response:
 ```php
 <?php
-use RESTfulTemplate\ResponseTemplate as ResT;
+use RESTfulTemplate\ResponseTemplate;
 
 $products = [
 	[
@@ -115,8 +113,8 @@ $products = [
 	/* ...more ones */
 ];
 
-$rest = new ResT( 200 );
-$rest = $rest->setLink( "next", "/products?page=2" );
+$rest = new ResponseTemplate( 200 );
+$rest = $rest->setLink( "next", "https://example.com/products?page=2" );
 $response = $rest->build();
 // $response contains following array:
 // [
@@ -150,7 +148,16 @@ It's possible insert a third argument into `setLink` method to define `"method"`
 
 
 ## <a name="plan"></a> Plan
-This project aims to be up to date with standards. Future version will be aligned to [RFC 7231](https://tools.ietf.org/html/rfc7231#section-6.5.1).
+This project aims to be up to date with standards. Future version may be aligned to [RFC 7231](https://tools.ietf.org/html/rfc7231#section-6.5.1).
+Some implementation in the roadmap:
+### Setting custom link key
+- if a query string starting with `?` is given, the basename and path must be the same as `self url`.
+- if a path is given, the basename must be the same as `self url`.
+- if a basename including `.` is given, the protocol must be the same as `self url`.
+- only full path including http/https protocol in the string must be placed as it is into custom key url property.
+
+## <a name="support"></a> Support
+If you need some help you can open an issue.
 
 ## <a name="contribute"></a> Contribute
 Do a pull request or send email to Support.
