@@ -2,13 +2,14 @@
     "name": "restful-template/response-template",
     "description": "A response interface builder for REST API",
     "type": "library",
+    "minimum-stability": "stable",
     "keywords": [ "restful", "rest api", "http response" ],
     "homepage": "https://github.com/enriquerene/response-template.git",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Enrique René Beauxis Reyes",
-            "email": "contato@enriquerene.com.br",
+            "email": "enriquerenebr@gmail.com",
             "homepage": "https://enriquerene.com.br",
             "role": "Developer"
         }
