@@ -115,7 +115,7 @@ $products = [
 
 $rest = new ResponseTemplate( 200 );
 $rest = $rest->setLink( "next", "https://example.com/products?page=2" );
-$response = $rest->build();
+$response = $rest->build( $products );
 // $response contains following array:
 // [
 // 	"status" => [
