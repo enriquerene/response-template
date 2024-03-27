@@ -79,9 +79,9 @@ class ResponseTemplate
         510 => "Not Extended",
         511 => "Network Authentication Required"
     ];
-	const SELF_LINK_EXCEPTION_MESSAGE = 'A propriedade "self" deve possuir um URL definida em links.';
-	const STATUS_CODE_EXCEPTION_MESSAGE = 'O código de estado HTTP deve ser um entre os seguintes: 100, 101, 102, 103, 200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431, 451, 500, 501, 502, 503, 504, 505, 506, 507, 508, 510, 511.';
+	const SELF_LINK_EXCEPTION_MESSAGE = 'The "self" property should contain a defined URL in links.';
     const ARG_TYPE_EXCEPTION_MESSAGE = 'Given argument missmatches with required type.';
+    const STATUS_CODE_EXCEPTION_MESSAGE = 'The HTTP status code should be one of the following list: ';
 
 	/**
 	 * @var int
@@ -100,7 +100,16 @@ class ResponseTemplate
 
 	function __construct ( int $statusCode )
 	{
-		if ( ! in_array( $statusCode, array_keys( self::STATUS_MAP ), true ) ) throw new Exception( self::STATUS_CODE_EXCEPTION_MESSAGE );
+        if (
+            !in_array(
+                $statusCode,
+                array_keys( self::STATUS_MAP ),
+                true
+            )
+        ) throw new Exception(
+           self::STATUS_CODE_EXCEPTION_MESSAGE . implode(', ', array_keys(self::STATUS_MAP))
+        );
+
 		$this->statusCode = $statusCode;
 		$this->basename = $this->getBasename();
         $selfUrl = $this->basename . $this->getRequestPath();

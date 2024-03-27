@@ -151,10 +151,10 @@ It's possible insert a third argument into `setLink` method to define `"method"`
 This project aims to be up to date with standards. Future version may be aligned to [RFC 7231](https://tools.ietf.org/html/rfc7231#section-6.5.1).
 Some implementation in the roadmap:
 ### Setting custom link key
-- if a query string starting with `?` is given, the basename and path must be the same as `self url`.
-- if a path is given, the basename must be the same as `self url`.
-- if a basename including `.` is given, the protocol must be the same as `self url`.
-- only full path including http/https protocol in the string must be placed as it is into custom key url property.
+- If just the query string starting with `?` is given, the same basename and path will be retrieved as in  `self url`.
+- If just the path is given, the same basename will be retrieved as in `self url`.
+- If a basename including `.` is given, the same protocol will be retrieved as in `self url`.
+- Given full path including http/https protocol will be placed as it is into custom key url property.
 
 ## <a name="support"></a> Support
 If you need some help you can open an issue.

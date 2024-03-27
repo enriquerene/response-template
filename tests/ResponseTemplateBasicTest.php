@@ -1,7 +1,6 @@
 <?php
 
 namespace RESTfulTemplate;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 require_once __DIR__ . '/../src/ResponseTemplate.php';
 
@@ -22,7 +21,9 @@ final class ResponseTemplateBasicTest extends TestCase
         } catch(\Exception $e) {
             $message = $e->getMessage();
         }
-        $this->assertSame(ResponseTemplate::STATUS_CODE_EXCEPTION_MESSAGE, $message);
+        $exceptionMessage = ResponseTemplate::STATUS_CODE_EXCEPTION_MESSAGE;
+        $exceptionMessage .= implode(', ', array_keys(ResponseTemplate::STATUS_MAP));
+        $this->assertSame($exceptionMessage, $message);
     }
 
     /**

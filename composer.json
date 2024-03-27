@@ -1,6 +1,6 @@
 {
     "name": "restful-template/response-template",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "description": "A response interface builder for REST API",
     "type": "library",
     "minimum-stability": "stable",
@@ -16,9 +16,9 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^8.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^11"
     }
 }
