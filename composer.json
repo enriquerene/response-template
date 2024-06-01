@@ -1,6 +1,6 @@
 {
     "name": "restful-template/response-template",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A response interface builder for REST API",
     "type": "library",
     "minimum-stability": "stable",
@@ -11,7 +11,7 @@
         {
             "name": "Enrique René Beauxis Reyes",
             "email": "enriquerenebr@gmail.com",
-            "homepage": "https://enriquerene.com.br",
+            "homepage": "https://enriquerene.com.br/whoiam/",
             "role": "Developer"
         }
     ],

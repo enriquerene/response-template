@@ -2,7 +2,7 @@
 
 namespace RESTfulTemplate;
 
-use \Exception;
+use Exception;
 
 class ResponseTemplate
 {
@@ -79,26 +79,19 @@ class ResponseTemplate
         510 => "Not Extended",
         511 => "Network Authentication Required"
     ];
-	const SELF_LINK_EXCEPTION_MESSAGE = 'The "self" property should contain a defined URL in links.';
-    const ARG_TYPE_EXCEPTION_MESSAGE = 'Given argument missmatches with required type.';
+    const ARG_TYPE_EXCEPTION_MESSAGE = 'Given argument mismatches with required type.';
     const STATUS_CODE_EXCEPTION_MESSAGE = 'The HTTP status code should be one of the following list: ';
 
-	/**
-	 * @var int
-	 */
-	private $statusCode;
+	private int $statusCode;
 
-	/**
-	 * @var array
-	 */
-	private $links = [];
+	private array $links = [];
 
-	/**
-	 * @var string
-	 */
-	private $basename = '';
+	private string $basename = '';
 
-	function __construct ( int $statusCode )
+    /**
+     * @throws Exception
+     */
+    function __construct (int $statusCode )
 	{
         if (
             !in_array(
@@ -123,8 +116,9 @@ class ResponseTemplate
     /**
      * Builds an associative array based on ResponseTemplate configuration, status code and given data and links.
      *
-     * @param Type $data Data to be attached to data property of response template.
-     * @return Description
+     * @param array $data Data to be attached to data property of response template.
+     * @return array
+     * @throws Exception
      */
 	public function build ( array $data = [] ): array
 	{
@@ -137,9 +131,9 @@ class ResponseTemplate
     }
 
     /**
-     * Get status structure as array. Status is an structure containing "code" and "message" fields.
+     * Get status structure as array. Status is a structure containing "code" and "message" fields.
      *
-     * @return Status associative array.
+     * @return array associative array.
      */
 	public function getStatus (): array
 	{
@@ -152,7 +146,7 @@ class ResponseTemplate
     /**
      * Get HTTP status message accordingly given status code.
      *
-     * @return HTTP Message associated to given status code.
+     * @return string Message associated to given status code.
      */
 	public function getStatusMessage (): string
 	{
@@ -165,7 +159,7 @@ class ResponseTemplate
      * @param string $key Link key name
      * @param string $url Link url
      * @param string $method Link method
-     * @return Instance of ResponseTemplate.
+     * @return ResponseTemplate
      */
 	public function setLink( string $key, string $url, string $method = 'GET' ): ResponseTemplate
 	{
@@ -179,7 +173,7 @@ class ResponseTemplate
     /**
      * Get basename from server. Protocol is included.
      *
-     * @return Basename string including protocol.
+     * @return string string including protocol.
      */
 	public function getBasename (): string
 	{
@@ -191,7 +185,7 @@ class ResponseTemplate
     /**
      * Get HTTP request query string.
      *
-     * @return HTTP request query string.
+     * @return string request query string.
      */
 	public function getRequestQueryString(): string
 	{
@@ -201,7 +195,7 @@ class ResponseTemplate
     /**
      * Get HTTP request method.
      *
-     * @return HTTP request method.
+     * @return string request method.
      */
 	public function getRequestMethod(): string
 	{
@@ -211,7 +205,7 @@ class ResponseTemplate
     /**
      * Get HTTP request path.
      *
-     * @return HTTP request path.
+     * @return string request path.
      */
 	public function getRequestPath(): string
 	{
@@ -229,4 +223,3 @@ class ResponseTemplate
 		return ! empty( $this->links[ $key ] );
 	}
 }
-
