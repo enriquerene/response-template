@@ -1,6 +1,6 @@
 {
     "name": "restful-template/response-template",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A response interface builder for REST API",
     "type": "library",
     "minimum-stability": "stable",
@@ -20,5 +20,10 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^11"
+    },
+    "autoload": {
+        "psr-4": {
+            "RESTfulTemplate\\": "src/"
+        }
     }
 }
